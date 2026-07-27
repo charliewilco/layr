@@ -171,9 +171,11 @@ export function getStaticPaths() {
     "styleguide",
     "usage",
     "utilities",
-  ].map((slug) => ({
-    params: { slug },
-  }));
+  ].map(function buildPath(slug) {
+    return {
+      params: { slug },
+    };
+  });
 }
 
 const { slug } = Astro.params;
@@ -234,11 +236,13 @@ const definitions = [
 {
   modulePage && (
     <Article title={modulePage.title} description={modulePage.description}>
-      {modulePage.modules.map(([title, Component]) => (
-        <Module title={title}>
-          <Component />
-        </Module>
-      ))}
+      {modulePage.modules.map(function renderModule([title, Component]) {
+        return (
+          <Module title={title}>
+            <Component />
+          </Module>
+        );
+      })}
       <Installation full />
     </Article>
   )
