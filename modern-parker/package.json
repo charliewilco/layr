@@ -1,0 +1,23 @@
+{
+  "name": "modern-parker",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A modern TypeScript port of Parker's CSS metrics for Layr",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "postcss": "^8.5.23"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^6.0.3"
+  },
+  "author": "charles peters <charlespeters42@gmail.com>",
+  "license": "MIT",
+  "repository": "charliewilco/layr"
+}

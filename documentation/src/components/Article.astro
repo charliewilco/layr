@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  meta?: string;
+  size?: "sm" | "md" | "lg";
+}
+
+const { title, description, meta, size = "lg" } = Astro.props;
+const containerClass = [
+  "o-Container",
+  "o-Container--center",
+  `o-Container--${size}`,
+  "u-pt2",
+].join(" ");
+---
+
+<BaseLayout title={title} description={description ?? meta}>
+  <article class={containerClass}>
+    {
+      title && (
+        <>
+          <header class="o-Container o-Container--center o-Container--sm u-center u-mb3 u-px3">
+            <h1 class="h3 u-w300 u-mb2">{title}</h1>
+            {description && <p class="h6">{description}</p>}
+          </header>
+          <hr class="Rule" />
+        </>
+      )
+    }
+    <slot />
+  </article>
+</BaseLayout>

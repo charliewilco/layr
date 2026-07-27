@@ -1,0 +1,10 @@
+/*
+  SETTINGS - Project Wide Variables and Default Values
+
+  Colors............All Colors and Color Deviations.
+  Defaults..........Project Wide Variables, Theme & Custom Selectors.
+  Media Queries.....Custom Media Queries Declarations.
+*/
+
+@import './layr.colors';
+@import './layr.defaults';

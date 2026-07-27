@@ -1,0 +1,28 @@
+---
+interface Props {
+  full?: boolean;
+}
+
+const { full = false } = Astro.props;
+---
+
+{
+  full ? (
+    <>
+      <hr class="Rule" />
+      <div class="o-Container o-Container--xs o-Container--center Stage">
+        <h4 class="h6 u-w700 u-mb3">Run the reference implementation</h4>
+        <figure class="highlight">
+          <pre class="language-shell"><code class="language-shell" data-lang="shell">npm install
+npm run dev --workspace layr-documentation</code></pre>
+        </figure>
+      </div>
+    </>
+  ) : (
+    <div class="o-Container--xs">
+      <figure class="highlight">
+        <pre class="language-shell"><code class="language-shell h5 u-mono" data-lang="shell">npm run dev --workspace layr-documentation</code></pre>
+      </figure>
+    </div>
+  )
+}

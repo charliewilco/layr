@@ -1,0 +1,25 @@
+---
+interface DefinitionItem {
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  data: DefinitionItem[];
+}
+
+const { data } = Astro.props;
+---
+
+<dl class="u-pt4 u-pb2">
+  {
+    data.map(function renderDefinition({ title, description }) {
+      return (
+        <>
+          <dt class="h6 u-w400 u-mb1">{title}</dt>
+          <dd class="u-mb4">{description}</dd>
+        </>
+      );
+    })
+  }
+</dl>

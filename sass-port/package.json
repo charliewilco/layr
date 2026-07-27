@@ -1,27 +1,33 @@
 {
-  "name": "obsidian.scss",
+  "name": "layr.scss",
+  "private": true,
   "version": "0.0.1",
-  "description": "A Sass port of Obsidian.css",
-  "homepage": "https://obsidian.charlespeters.net",
+  "description": "A deprecated Sass port of Layr",
+  "homepage": "https://charliewilco.github.io/layr",
   "main": "index.js",
-  "styles": "lib/_obsidian.scss",
+  "styles": "lib/_layr.scss",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sass ./lib/index.scss ./dist/obsidian-sassy.css",
-    "watch": "watch 'npm run bundle' lib"
+    "build": "sass ./lib/index.scss ./dist/layr-sassy.css",
+    "watch": "npm run build -- --watch"
   },
   "author": "charles peters <charlespeters42@gmail.com> (https://charlespeters.net)",
   "license": "MIT",
   "devDependencies": {
-    "sass": "^1.45.0",
-    "watch": "^ 1.0.2"
+    "sass": "^1.102.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/charlespeters/obsidian.scss.git"
+    "url": "git+https://github.com/charliewilco/layr.git"
   },
-  "keywords": ["sass", "modular", "css", "library", "obsidian"],
+  "keywords": [
+    "sass",
+    "modular",
+    "css",
+    "library",
+    "layr"
+  ],
   "bugs": {
-    "url": "https://github.com/charlespeters/obsidian.scss/issues"
+    "url": "https://github.com/charliewilco/layr/issues"
   }
 }

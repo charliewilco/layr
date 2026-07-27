@@ -1,6 +1,0 @@
-/*----------Obsidian Media Queries----------*/
-
-@custom-media --sm only screen and (min-width: 31.25rem);
-@custom-media --md only screen and (min-width: 48rem);
-@custom-media --lg only screen and (min-width: 57.75rem);
-@custom-media --xl only screen and (min-width: 75rem);

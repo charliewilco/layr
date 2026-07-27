@@ -1,0 +1,117 @@
+---
+import "layr.css/dist/layr.css";
+import "../../global.css";
+
+import { pages, subpages } from "../data/navigation";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const name = "Layr";
+const pageTitle = title ? `${title} | ${name}` : name;
+const currentPath = Astro.url.pathname.replace(Astro.site?.pathname ?? "", "");
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+function withBase(href: string) {
+  return `${base}${href}`;
+}
+
+function isActive(href: string) {
+  return currentPath === href || currentPath === `${href}/`;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" href={withBase("/static/favicon.ico")} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="Header u-p2">
+      <div class="o-Flex o-Flex--wrap o-Flex--center--h o-Flex--j--sb">
+        <a href={withBase("/")} class="o-Flex o-Flex--center--h">
+          <h1 class="h5">Layr</h1>
+        </a>
+        <div class="small u-w700">
+          <small class="u-mono u-mr3">v3.1.0</small>
+          <a href="https://github.com/charliewilco/layr">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="NavList u-bg--offwhite u-mb5">
+      <ul class="NavList__items u-w400">
+        {
+          pages.map(function renderPageLink({ name, href }) {
+            return (
+              <li class="NavList__item u-mr3">
+                <a
+                  class:list={[
+                    "NavList__link u-px2 u-py3",
+                    { active: isActive(href) },
+                  ]}
+                  href={withBase(href)}
+                >
+                  {name}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <main class="u-mb6">
+      <slot />
+    </main>
+
+    <nav class="u-px2 u-center">
+      <hr class="Rule" />
+      <h4 class="h6 u-mb3">Further Reading</h4>
+      <ul class="SubNavList u-w400">
+        {
+          subpages.map(function renderSubpageLink({ name, href }) {
+            return (
+              <li class="u-inbl u-mx2">
+                <a class={isActive(href) ? "u-w700" : ""} href={withBase(href)}>
+                  {name}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <footer
+      class="o-Container o-Container--lg o-Container--center u-mb3 u-p3 u-py5@md small"
+    >
+      <div class="o-Flex o-Flex--wrap o-Flex--center--h o-Flex--j--sb">
+        <div class="o-col--4/12@md">
+          <h4 class="h6">Layr</h4>
+          <p class="u-sans">
+            Layr is a modular CSS library that focuses on code common to
+            most projects.
+          </p>
+        </div>
+        <nav class="o-col--4/12@md">
+          <ul class="list--reset u-w700 u-right">
+            <li class="u-inbl u-py2 u-pr2">
+              <a href="https://github.com/charliewilco/layr">GitHub</a>
+            </li>
+            <li class="u-inbl u-py2">
+              <a href={withBase("/usage")}>Usage</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

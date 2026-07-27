@@ -1,10 +1,10 @@
 const path = require('path');
-const obsidianPath = require.resolve('./lib/_obsidian.scss');
+const layrPath = require.resolve('./lib/_layr.scss');
 
-const obsidianDir = path.dirname(obsidianPath);
+const layrDir = path.dirname(layrPath);
 
 function includePaths() {
-  return [obsidianDir];
+  return [layrDir];
 }
 
 module.exports = {

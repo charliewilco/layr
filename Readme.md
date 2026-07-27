@@ -1,25 +1,23 @@
-# ![Obsidian.css](http://cl.ly/2T0B352h1d1n/obsidian-header.png)
+# Layr
 
-[![npm version](https://badge.fury.io/js/obsidian.css.svg)](https://badge.fury.io/js/obsidian.css)
-[![Build Status](https://travis-ci.org/charliewilco/obsidian.svg?branch=master)](https://travis-ci.org/charliewilco/obsidian)
+[![Documentation](https://github.com/charliewilco/layr/actions/workflows/pages.yml/badge.svg)](https://github.com/charliewilco/layr/actions/workflows/pages.yml)
 
-Obsidian.css is a modular CSS library that focuses on code common to most projects.
+Layr is a live ITCSS reference implementation for teams.
 
-This project works under the belief that when abstracted most CSS is shockingly similar across projects. More than likely you'll need a type scale, a grid system, spacing utilities, media blocks, sensible default styling for elements (forms, tables, buttons). This project is a collection of the CSS patterns that have stuck with me over the last two years and grown with me.
+Layr is the renamed continuation of the old Obsidian.css project. It is not currently intended for npm republishing; the goal is to keep a working, inspectable implementation of layered CSS architecture that teams can study, adapt, and run locally.
+
+This project works under the belief that when abstracted most CSS is shockingly similar across projects. More than likely you'll need a type scale, a grid system, spacing utilities, media blocks, sensible default styling for elements (forms, tables, buttons), and a small set of predictable components. Layr keeps those patterns organized as a concrete ITCSS system rather than as a marketing shell.
 
 Styles are written in an adapted BEM naming convention and organized in an [ITCSS-like](/itcss) methodology. It uses PostCSS plugins to compile variables, color functions and add vendor prefixes.
 
-## Installation
+## Running Locally
 
-```
-yarn add obsidian.css --save
+```sh
+npm install
+npm run dev --workspace layr-documentation
 ```
 
-or link to the CDN
-
-```markup
-<link rel="stylesheet" href="https://unpkg.com/obsidian.css" media="screen" title="Obsidian.css" charset="utf-8">
-```
+The documentation site imports the local `layr.css` workspace package and renders live examples from the source CSS modules.
 
 ### Using in Build
 
@@ -46,18 +44,18 @@ gulp.task('styles', () => {
 });
 ```
 
-then import into your CSS and modify some variables:
+In a downstream build, import the local package or copy the layer you want to adapt:
 
 ```css
-@import 'obsidian.css/lib/settings';
-@import 'obsidian.css/lib/generic';
-@import 'obsidian.css/lib/elements';
+@import 'layr.css/src/settings';
+@import 'layr.css/src/generic';
+@import 'layr.css/src/elements';
 
-@import 'obsidian.css/lib/objects/obsidian.grid';
+@import 'layr.css/src/objects/layr.grid-columns';
 ```
 
 ```css
-@import 'obsidian.css';
+@import 'layr.css';
 
 :root {
   --headlines: 'Proxima Nova Condensed', Lucida Grande, sans-serif;
@@ -75,13 +73,13 @@ And things should compile the way you'd expect.
 
 In this implementation there are a few differences. Normally in ITCSS, you could have a tools like Sass functions, but most of the tools we'd need are coming in CSS and transpiled by [PostCSS plugins](https://postcss.org/).
 
-Objects have minimal visual styling in Obsidian. This is a set between the reset styling and the component level styling because it's beyond an element.
+Objects have minimal visual styling in Layr. This is a set between the reset styling and the component level styling because it's beyond an element.
 
 Settings contain base styles but often module variables are only contained in that module; there are a few exceptions (like shadow values).
 
 ### Naming Classes
 
-Classes in Obsidian are named with purpose.
+Classes in Layr are named with purpose.
 
 ### Prefixes
 
@@ -89,13 +87,13 @@ Objects, components, and utilities are all prefixed (`.o-`, `.c-`, `.u-`). This 
 
 #### Exceptions
 
-Elements are not prefixed (ie. `.list`, `.table`) because they extend responsive ability or serve as a opt-in default for an element vs opinionated styling. Classes in `obsidian.forms-ui` add specific opinionated styling that's common to projects.
+Elements are not prefixed (ie. `.list`, `.table`) because they extend responsive ability or serve as a opt-in default for an element vs opinionated styling. Classes in `layr.forms-ui` add specific opinionated styling that's common to projects.
 
 #### Suffixes
 
-Obsidian uses responsive suffixes `@sm`. Responsive targeting shouldn't be a modifier and falls in its own category. Obsidian defaults to a mobile first approach to CSS, meaning that classes without suffixes apply their styles to all screen sizes and ascend upward for styling per suffix.
+Layr uses responsive suffixes `@sm`. Responsive targeting shouldn't be a modifier and falls in its own category. Layr defaults to a mobile first approach to CSS, meaning that classes without suffixes apply their styles to all screen sizes and ascend upward for styling per suffix.
 
-`@sm`, `@md`, `@lg` are the given suffixes in Obsidian.
+`@sm`, `@md`, `@lg` are the given suffixes in Layr.
 
 #### BEM
 
@@ -113,7 +111,7 @@ Blocks can be described as squares you can draw around a piece of UI or the root
 
 Blocks are the basis of a name. They can have both a modifier and a element attached (`.block__element--modifier`) or have just have one (either a modifier `.block--modifier` or an element `.block__element`.
 
-Utilities in Obsidian get a specific block name that describes their function. For example `d` abbreviating `display` or `bkg` abbreviating `background`.
+Utilities in Layr get a specific block name that describes their function. For example `d` abbreviating `display` or `bkg` abbreviating `background`.
 
 ##### Element Names
 
@@ -140,16 +138,16 @@ First off, you're awesome for wanting to contribute. Second, please take a secon
 Clone the repository and run the following in the root of the project:
 
 ```sh
-yarn
+npm install
 
-yarn workspace obsidian-documentation dev -p 5000 # open this in one tab
+npm run dev --workspace layr-documentation # open this in one tab
 
-yarn workspace obsidian.css dev # open this in another
+npm run dev --workspace layr.css # open this in another
 ```
 
-This project uses [yarn workspaces](https://yarnpkg.com/en/docs/workspaces).
+This project uses [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces).
 
-Inside this project there are PostCSS plugins, the core library, and the dev documenation.
+Inside this project there are PostCSS plugins, the core library, and the dev documentation.
 
 ### Issues
 
@@ -162,7 +160,7 @@ Inside this project there are PostCSS plugins, the core library, and the dev doc
 
 ### Pull Requests
 
-- [Fork](https://github.com/charlespeters/obsidian#fork-destination-box) this repo.
+- [Fork](https://github.com/charliewilco/layr#fork-destination-box) this repo.
 - Push to your fork and submit a pull request.
 - Please provide a short explanation of why you made the changes you made.
 
