@@ -1,8 +1,11 @@
-# Layr
+> [!NOTE]  
+> A decade ago this was the defacto way I implemented CSS on teams. Now this project serves a reference implementation.
 
 <p align="center">
   <img src="documentation/public/static/assets/layr-logo@1x.png" alt="Layr logo" width="109" height="94">
 </p>
+
+# Layr
 
 [![Documentation](https://github.com/charliewilco/layr/actions/workflows/pages.yml/badge.svg)](https://github.com/charliewilco/layr/actions/workflows/pages.yml)
 
