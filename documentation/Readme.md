@@ -2,6 +2,8 @@
 
 > MDX + Astro
 
+The published site lives at <https://charliewilco.github.io/layr/>.
+
 ```sh
 npm run dev --workspace layr-documentation
 ```
