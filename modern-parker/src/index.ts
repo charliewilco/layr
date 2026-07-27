@@ -33,17 +33,23 @@ interface SelectorReading {
 const IDENTIFIER_PATTERN = /[#.:]?[\w\-*]+|\[[\w=\-~'"|]+\]|:{2}[\w-]+/g;
 const HEX_COLOR_PATTERN = /#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\b/g;
 
-const mean = (values: number[]) => {
+function mean(values: number[]) {
   if (values.length === 0) {
     return 0;
   }
 
-  return values.reduce((sum, value) => sum + value, 0) / values.length;
-};
+  return values.reduce(sumNumbers, 0) / values.length;
+}
 
-const unique = <T>(values: T[]) => [...new Set(values)];
+function sumNumbers(sum: number, value: number) {
+  return sum + value;
+}
 
-const splitList = (value: string) => {
+function unique<T>(values: T[]) {
+  return [...new Set(values)];
+}
+
+function splitList(value: string) {
   const items: string[] = [];
   let current = "";
   let bracketDepth = 0;
@@ -93,19 +99,23 @@ const splitList = (value: string) => {
   }
 
   return items;
-};
+}
 
-const getIdentifiers = (selector: string) =>
-  selector.match(IDENTIFIER_PATTERN)?.filter(Boolean) ?? [];
+function getIdentifiers(selector: string) {
+  return selector.match(IDENTIFIER_PATTERN)?.filter(Boolean) ?? [];
+}
 
-const getSpecificity = (identifiers: string[]) =>
-  identifiers.reduce((specificity, identifier) => {
+function getSpecificity(identifiers: string[]) {
+  let specificity = 0;
+
+  for (const identifier of identifiers) {
     if (identifier.includes(":not")) {
-      return specificity;
+      continue;
     }
 
     if (identifier.startsWith("#")) {
-      return specificity + 100;
+      specificity += 100;
+      continue;
     }
 
     if (
@@ -113,21 +123,24 @@ const getSpecificity = (identifiers: string[]) =>
       identifier.startsWith("[") ||
       (identifier.startsWith(":") && !identifier.startsWith("::"))
     ) {
-      return specificity + 10;
+      specificity += 10;
+      continue;
     }
 
     if (identifier.startsWith("::")) {
-      return specificity + 1;
+      specificity += 1;
+      continue;
     }
 
     if (/^[a-zA-Z_]/.test(identifier)) {
-      return specificity + 1;
+      specificity += 1;
     }
+  }
 
-    return specificity;
-  }, 0);
+  return specificity;
+}
 
-const readSelector = (selector: string): SelectorReading => {
+function readSelector(selector: string): SelectorReading {
   const identifiers = getIdentifiers(selector);
 
   return {
@@ -135,37 +148,46 @@ const readSelector = (selector: string): SelectorReading => {
     identifiers,
     specificity: getSpecificity(identifiers),
   };
-};
+}
 
-const expandShortHex = (hex: string) => {
+function expandShortHex(hex: string) {
   if (hex.length !== 4) {
     return hex.toUpperCase();
   }
 
   const [, red, green, blue] = hex;
   return `#${red}${red}${green}${green}${blue}${blue}`.toUpperCase();
-};
+}
 
-const collectColours = (declarations: Declaration[]) =>
-  declarations.flatMap((declaration) =>
-    (declaration.value.match(HEX_COLOR_PATTERN) ?? []).map(expandShortHex),
-  );
+function collectColours(declarations: Declaration[]) {
+  const colours: string[] = [];
 
-const collectRules = (css: string) => {
+  for (const declaration of declarations) {
+    const matches = declaration.value.match(HEX_COLOR_PATTERN) ?? [];
+
+    for (const hex of matches) {
+      colours.push(expandShortHex(hex));
+    }
+  }
+
+  return colours;
+}
+
+function collectRules(css: string) {
   const root = postcss.parse(css, { from: undefined });
   const rules: Rule[] = [];
   const declarations: Declaration[] = [];
   const mediaQueries: string[] = [];
 
-  root.walkRules((rule) => {
+  root.walkRules(function collectRule(rule) {
     rules.push(rule);
   });
 
-  root.walkDecls((declaration) => {
+  root.walkDecls(function collectDeclaration(declaration) {
     declarations.push(declaration);
   });
 
-  root.walkAtRules("media", (mediaRule) => {
+  root.walkAtRules("media", function collectMediaRule(mediaRule) {
     mediaQueries.push(...splitList(mediaRule.params));
   });
 
@@ -174,27 +196,66 @@ const collectRules = (css: string) => {
     declarations,
     mediaQueries,
   };
-};
+}
 
-export const analyze = (css: string): ModernParkerReport => {
+function getIdentifierCount(reading: SelectorReading) {
+  return reading.identifiers.length;
+}
+
+function getSelectorSpecificity(reading: SelectorReading) {
+  return reading.specificity;
+}
+
+function getSelectorListLength(selectors: string[]) {
+  return selectors.length;
+}
+
+function countIdSelectors(selectors: string[]) {
+  let count = 0;
+
+  for (const selector of selectors) {
+    if (selector.includes("#")) {
+      count += 1;
+    }
+  }
+
+  return count;
+}
+
+function countImportantKeywords(declarations: Declaration[]) {
+  let count = 0;
+
+  for (const declaration of declarations) {
+    if (declaration.important || /!important\b/i.test(declaration.value)) {
+      count += 1;
+    }
+  }
+
+  return count;
+}
+
+function findTopSelector(readings: SelectorReading[]) {
+  let topSelector: SelectorReading | undefined;
+
+  for (const reading of readings) {
+    if (!topSelector || reading.specificity > topSelector.specificity) {
+      topSelector = reading;
+    }
+  }
+
+  return topSelector;
+}
+
+export function analyze(css: string): ModernParkerReport {
   const { rules, declarations, mediaQueries } = collectRules(css);
-  const selectorLists = rules.map((rule) => splitList(rule.selector));
+  const selectorLists = rules.map(function readSelectorList(rule) {
+    return splitList(rule.selector);
+  });
   const selectors = selectorLists.flat();
   const selectorReadings = selectors.map(readSelector);
-  const identifierCounts = selectorReadings.map(
-    (reading) => reading.identifiers.length,
-  );
-  const specificities = selectorReadings.map((reading) => reading.specificity);
-  const topSelector = selectorReadings.reduce<SelectorReading | undefined>(
-    (highest, reading) => {
-      if (!highest || reading.specificity > highest.specificity) {
-        return reading;
-      }
-
-      return highest;
-    },
-    undefined,
-  );
+  const identifierCounts = selectorReadings.map(getIdentifierCount);
+  const specificities = selectorReadings.map(getSelectorSpecificity);
+  const topSelector = findTopSelector(selectorReadings);
   const colours = unique(collectColours(declarations));
   const uniqueMediaQueries = unique(mediaQueries);
 
@@ -202,25 +263,21 @@ export const analyze = (css: string): ModernParkerReport => {
     "total-stylesheets": 1,
     "total-stylesheet-size": Buffer.byteLength(css),
     "total-rules": rules.length,
-    "selectors-per-rule": mean(selectorLists.map((selectors) => selectors.length)),
+    "selectors-per-rule": mean(selectorLists.map(getSelectorListLength)),
     "total-selectors": selectors.length,
     "identifiers-per-selector": mean(identifierCounts),
     "specificity-per-selector": mean(specificities),
     "top-selector-specificity": topSelector?.specificity ?? 0,
     "top-selector-specificity-selector": topSelector?.selector ?? "",
-    "total-id-selectors": selectors.filter((selector) => selector.includes("#"))
-      .length,
-    "total-identifiers": identifierCounts.reduce((sum, count) => sum + count, 0),
+    "total-id-selectors": countIdSelectors(selectors),
+    "total-identifiers": identifierCounts.reduce(sumNumbers, 0),
     "total-declarations": declarations.length,
     "total-unique-colours": colours.length,
     "unique-colours": colours,
-    "total-important-keywords": declarations.filter(
-      (declaration) =>
-        declaration.important || /!important\b/i.test(declaration.value),
-    ).length,
+    "total-important-keywords": countImportantKeywords(declarations),
     "total-media-queries": uniqueMediaQueries.length,
     "media-queries": uniqueMediaQueries,
   };
-};
+}
 
 export default analyze;

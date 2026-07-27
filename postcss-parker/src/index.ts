@@ -11,15 +11,15 @@ const defaultOptions: Required<ParkerPluginOptions> = {
   outputFile: "./parker.json",
 };
 
-const writeReport = (outputFile: string, css: string) => {
+function writeReport(outputFile: string, css: string) {
   const report = analyze(css);
   const destination = resolve(outputFile);
 
   mkdirSync(dirname(destination), { recursive: true });
   writeFileSync(destination, `${JSON.stringify(report, null, 2)}\n`);
-};
+}
 
-const parker: PluginCreator<ParkerPluginOptions> = (options = {}) => {
+const parker: PluginCreator<ParkerPluginOptions> = function parker(options = {}) {
   const opts = {
     ...defaultOptions,
     ...options,

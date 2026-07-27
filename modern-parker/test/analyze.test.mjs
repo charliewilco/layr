@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { analyze } from "../dist/index.js";
 
-test("reports Parker-compatible stylesheet metrics", () => {
+test("reports Parker-compatible stylesheet metrics", function reportsMetrics() {
   const report = analyze(`
     .a, .b:hover { color: #fff; }
     #hero { color: #000000 !important; }
