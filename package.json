@@ -16,13 +16,17 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.2.0",
     "prettier": "^3.9.6",
-    "turbo": "^2.10.7"
+    "turbo": "^2.10.7",
+    "typescript": "^6.0.3"
   },
   "scripts": {
     "precommit": "lint-staged",
-    "build": "turbo run build",
-    "check": "turbo run check",
-    "lint": "turbo run lint"
+    "clean": "bash scripts/clean.sh",
+    "build": "turbo run build --filter=!layr.scss",
+    "build:sass": "npm run build --workspace layr.scss",
+    "check": "turbo run check --filter=!layr.scss",
+    "lint": "turbo run lint",
+    "test": "npm run test --workspace modern-parker && npm run test --workspace postcss-parker"
   },
   "prettier": {
     "printWidth": 85,

@@ -7,7 +7,7 @@
 :root {
   --range-thumb-w: calc(var(--form-height) / 2);
   --range-thumb-h: calc(var(--form-height) / 2);
-  --range-thumb-bg: linear-gradient(color(var(--form-offsetColor) lightness(+12.5%)), color(var(--form-offsetColor) lightness(+2.5)));
+  --range-thumb-bg: linear-gradient(color-mix(in srgb, var(--form-offsetColor) 87.5%, white), color-mix(in srgb, var(--form-offsetColor) 97.5%, white));
   --range-thumb-radius: 50%;
   --range-color: var(--color-1);
   --range-track-h: calc(var(--range-thumb-h) / 3);
@@ -27,7 +27,7 @@
 
 .c-Range::-webkit-slider-runnable-track {
   color: var(--range-color);
-  background: color(var(--range-color) a(87.5%));
+  background: color-mix(in srgb, var(--range-color) 87.5%, transparent);
   height: var(--range-track-h);
   border-radius: 3px;
   cursor: pointer;

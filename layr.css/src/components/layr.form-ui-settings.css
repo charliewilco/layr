@@ -13,7 +13,7 @@
   --form-border-color: var(--form-offsetColor);
 
   --base-outline: {
-    outline: 4px auto color(var(--color-1) a(87.5%));
+    outline: 4px auto color-mix(in srgb, var(--color-1) 87.5%, transparent);
     outline-offset: 1px;
   }
 }

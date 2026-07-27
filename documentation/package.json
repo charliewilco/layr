@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
-    "check": "astro check"
+    "check": "astro check && npm run check:paths",
+    "check:paths": "node scripts/check-generated-paths.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",
@@ -18,6 +19,6 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@types/node": "^26.1.1",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3"
   }
 }

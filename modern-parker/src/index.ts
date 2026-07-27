@@ -32,6 +32,7 @@ interface SelectorReading {
 
 const IDENTIFIER_PATTERN = /[#.:]?[\w\-*]+|\[[\w=\-~'"|]+\]|:{2}[\w-]+/g;
 const HEX_COLOR_PATTERN = /#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\b/g;
+const FUNCTION_COLOR_PATTERN = /\b(?:rgb|rgba|hsl|hsla)\(\s*[^)]+\)/gi;
 
 function mean(values: number[]) {
   if (values.length === 0) {
@@ -84,7 +85,12 @@ function splitList(value: string) {
       parenDepth = Math.max(0, parenDepth - 1);
     }
 
-    if (char === "," && bracketDepth === 0 && parenDepth === 0) {
+    if (
+      char === "," &&
+      previous !== "\\" &&
+      bracketDepth === 0 &&
+      parenDepth === 0
+    ) {
       items.push(current.trim());
       current = "";
       continue;
@@ -159,14 +165,23 @@ function expandShortHex(hex: string) {
   return `#${red}${red}${green}${green}${blue}${blue}`.toUpperCase();
 }
 
+function normalizeColorFunction(color: string) {
+  return color.replace(/\s+/g, " ").trim().toLowerCase();
+}
+
 function collectColours(declarations: Declaration[]) {
   const colours: string[] = [];
 
   for (const declaration of declarations) {
-    const matches = declaration.value.match(HEX_COLOR_PATTERN) ?? [];
+    const hexMatches = declaration.value.match(HEX_COLOR_PATTERN) ?? [];
+    const functionMatches = declaration.value.match(FUNCTION_COLOR_PATTERN) ?? [];
 
-    for (const hex of matches) {
+    for (const hex of hexMatches) {
       colours.push(expandShortHex(hex));
+    }
+
+    for (const colorFunction of functionMatches) {
+      colours.push(normalizeColorFunction(colorFunction));
     }
   }
 
@@ -210,12 +225,14 @@ function getSelectorListLength(selectors: string[]) {
   return selectors.length;
 }
 
-function countIdSelectors(selectors: string[]) {
+function countIdSelectors(readings: SelectorReading[]) {
   let count = 0;
 
-  for (const selector of selectors) {
-    if (selector.includes("#")) {
-      count += 1;
+  for (const reading of readings) {
+    for (const identifier of reading.identifiers) {
+      if (identifier.startsWith("#")) {
+        count += 1;
+      }
     }
   }
 
@@ -269,7 +286,7 @@ export function analyze(css: string): ModernParkerReport {
     "specificity-per-selector": mean(specificities),
     "top-selector-specificity": topSelector?.specificity ?? 0,
     "top-selector-specificity-selector": topSelector?.selector ?? "",
-    "total-id-selectors": countIdSelectors(selectors),
+    "total-id-selectors": countIdSelectors(selectorReadings),
     "total-identifiers": identifierCounts.reduce(sumNumbers, 0),
     "total-declarations": declarations.length,
     "total-unique-colours": colours.length,

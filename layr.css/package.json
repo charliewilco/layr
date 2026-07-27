@@ -21,7 +21,7 @@
     "clean": "del ./dist",
     "dev": "npm run build:dev -- --watch",
     "build": "npm run build:dev && npm run build:prod",
-    "build:dev": "postcss src/index.css -o dist/layr.css",
+    "build:dev": "postcss src/index.css -o dist/layr.css && node scripts/export-css-vars.mjs dist/layr.css css.json",
     "build:prod": "postcss dist/layr.css --env production -o dist/layr.min.css --no-map"
   },
   "author": "charles peters <charlespeters42@gmail.com>",
@@ -33,14 +33,11 @@
   "homepage": "https://charliewilco.github.io/layr",
   "devDependencies": {
     "autoprefixer": "^10.5.4",
-    "css-mqpacker": "^7.0.0",
     "cssnano": "^8.0.2",
     "del-cli": "^7.0.0",
     "postcss": "^8.5.23",
     "postcss-cli": "^11.0.1",
-    "postcss-color-function": "^4.1.0",
     "postcss-custom-properties": "^15.0.1",
-    "postcss-export-vars": "^0.2.0",
     "postcss-import": "^16.1.1",
     "postcss-parker": "^0.1.0",
     "postcss-reporter": "^7.1.0",

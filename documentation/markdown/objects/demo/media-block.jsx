@@ -1,12 +1,11 @@
 import snippet from 'layr.css/src/objects/layr.media.css?raw';
-
-const IMAGE_URL = '/static/assets/filler-image.svg';
+import { fillerImage } from '../../demo-paths';
 
 const MediaBlock = () => (
   <div className="o-Container--lg">
     <div className="o-Media u-mb3 u-cf">
       <div className="o-Media__figure">
-        <img src={IMAGE_URL} alt="Impossible Triangle" />
+        <img src={fillerImage} alt="Impossible Triangle" />
       </div>
       <div className="o-Media__body u-pl3 small">
         <p className="u-system">
@@ -19,7 +18,7 @@ const MediaBlock = () => (
     </div>
     <div className="o-Media u-mb3 u-cf">
       <div className="o-Media__figure">
-        <img src={IMAGE_URL} alt="Impossible Triangle" />
+        <img src={fillerImage} alt="Impossible Triangle" />
       </div>
       <div className="o-Media__body u-pl3 small">
         <p className="u-system">
