@@ -1,8 +1,10 @@
-Through building Obsidian.css, it felt necessary to extend PostCSS with more plugins for analysis. Honestly, would encourage anyone to do this, [the API](https://github.com/postcss/postcss/blob/master/docs/writing-a-plugin.md) is well documented and there are dozens of examples to follow.
+Through building Layr, it felt necessary to extend PostCSS with more plugins for analysis. Honestly, would encourage anyone to do this, [the API](https://github.com/postcss/postcss/blob/master/docs/writing-a-plugin.md) is well documented and there are dozens of examples to follow.
 
-### PostCSS Parker
+### Modern Parker
 
-Parker is a CSS analysis tool to gives fine-grained stats about your stylesheet. This is a wrapper around [Parker](https://github.com/katiefenn/parker) to be used in a PostCSS pipeline and output to an named file.
+Modern Parker is Layr's TypeScript port of [Parker](https://github.com/katiefenn/parker), the CSS analysis tool originally created by Katie Fenn. The idea, metric vocabulary, and credit belong to Katie Fenn and the original Parker project; this local port exists so Layr can generate the same style of stylesheet complexity report from the current PostCSS pipeline without carrying the old runtime dependency.
+
+`postcss-parker` wraps Modern Parker in a PostCSS plugin and writes the report to `parker.json` for the documentation site.
 
 ### PostCSS Gzip
 
