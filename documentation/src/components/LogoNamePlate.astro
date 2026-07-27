@@ -1,3 +1,25 @@
-<h1 class="u-center u-mb3">
-  <span class="GradientTitle h1">Layr</span>
-</h1>
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+function withBase(href: string) {
+  return `${base}${href}`;
+}
+
+const logo = withBase("/static/assets/layr-logo@1x.png");
+const logo2x = withBase("/static/assets/layr-logo@2x.png");
+---
+
+<div class="u-center u-p1">
+  <img
+    alt="Layr logo"
+    class="Logo Logo--md u-bl u-mxa u-mb3"
+    height="187"
+    src={logo}
+    srcset={`${logo} 1x, ${logo2x} 2x`}
+    width="219"
+  />
+  <h1 class="u-mb2">
+    <span class="GradientTitle h1">Layr</span>
+  </h1>
+  <p class="h6 u-ltgray">A live ITCSS reference implementation for teams</p>
+</div>

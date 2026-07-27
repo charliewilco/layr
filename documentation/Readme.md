@@ -1,5 +1,9 @@
 # Layr Documentation
 
+<p align="center">
+  <img src="public/static/assets/layr-logo@1x.png" alt="Layr logo" width="109" height="94">
+</p>
+
 > MDX + Astro
 
 The published site lives at <https://charliewilco.github.io/layr/>.

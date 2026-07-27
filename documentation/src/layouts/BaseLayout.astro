@@ -37,6 +37,14 @@ function isActive(href: string) {
     <header class="Header u-p2">
       <div class="o-Flex o-Flex--wrap o-Flex--center--h o-Flex--j--sb">
         <a href={withBase("/")} class="o-Flex o-Flex--center--h">
+          <img
+            alt="Layr logo"
+            class="Logo Logo--sm u-bl u-mr2"
+            height="187"
+            src={withBase("/static/assets/layr-logo@1x.png")}
+            srcset={`${withBase("/static/assets/layr-logo@1x.png")} 1x, ${withBase("/static/assets/layr-logo@2x.png")} 2x`}
+            width="219"
+          />
           <h1 class="h5">Layr</h1>
         </a>
         <div class="small u-w700">

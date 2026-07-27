@@ -1,5 +1,9 @@
 # Layr
 
+<p align="center">
+  <img src="documentation/public/static/assets/layr-logo@1x.png" alt="Layr logo" width="109" height="94">
+</p>
+
 [![Documentation](https://github.com/charliewilco/layr/actions/workflows/pages.yml/badge.svg)](https://github.com/charliewilco/layr/actions/workflows/pages.yml)
 
 Layr is a live ITCSS reference implementation for teams.
