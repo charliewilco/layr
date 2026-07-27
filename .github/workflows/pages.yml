@@ -35,7 +35,7 @@ jobs:
         run: npm run build
 
       - name: Check documentation
-        run: npm run check --workspace obsidian-documentation
+        run: npm run check --workspace layr-documentation
 
       - name: Configure GitHub Pages
         if: github.event_name == 'push'
