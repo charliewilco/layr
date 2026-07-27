@@ -8,7 +8,7 @@ Layr is a live ITCSS reference implementation for teams.
 
 Layr is the renamed continuation of the old Obsidian.css project. It is private and not currently intended for npm republishing; the package exists so the Astro documentation can import and demonstrate the real CSS source.
 
-Styles are written in an adapted BEM naming convention and organized in an [ITCSS-like](/itcss) methodology. It uses PostCSS plugins to compile variables, color functions and add vendor prefixes.
+Styles are written in an adapted BEM naming convention and organized in an [ITCSS-like](https://charliewilco.github.io/layr/itcss/) methodology. It uses PostCSS plugins to resolve imports, process custom properties, add vendor prefixes, generate stylesheet metrics, and minify production CSS.
 
 ## Local Build
 

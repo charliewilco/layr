@@ -9,7 +9,7 @@
   --progress-radius: .25rem;
   --progress-color: var(--color-1);
   --progress-height: 2rem;
-  --progress-background: color(var(--color-5) lightness(+5%));
+  --progress-background: color-mix(in srgb, var(--color-5) 95%, white);
   --progress-height: 1.5rem;
 }
 

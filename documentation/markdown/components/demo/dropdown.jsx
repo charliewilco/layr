@@ -11,13 +11,13 @@ const Dropdown = () => (
           className="c-Dropdown c-Dropdown--l u-mxw--fit active"
           style={{ width: '18rem' }}>
           <h3 className="h6 u-p2">
-            <a href="/profile/">Heading</a>
+            <a href="#">Heading</a>
           </h3>
           <hr className="u-bg--ltgray" />
           <nav className="c-Nav small">
             <ul className="o-UIList">
               <li className="o-UIList__item u-p2">
-                <a href="/preferences/" className="u-gray200">
+                <a href="#" className="u-gray200">
                   Preferences
                 </a>
               </li>

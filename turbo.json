@@ -13,7 +13,8 @@
     },
     "check": {
       "dependsOn": [
-        "^build"
+        "^build",
+        "build"
       ],
       "outputs": []
     },

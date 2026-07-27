@@ -1,11 +1,11 @@
-const IMAGE_URL = '/static/assets/filler-image.svg';
 import snippet from 'layr.css/src/objects/layr.flag.css?raw';
+import { fillerImage } from '../../demo-paths';
 
 const Flag = () => (
   <>
     <div className="o-Flag u-mb3">
       <figure className="o-Flag__figure o-col--3/12 u-mr3">
-        <img src={IMAGE_URL} alt="Impossible Triangle" className="u-bl" />
+        <img src={fillerImage} alt="Impossible Triangle" className="u-bl" />
       </figure>
       <div className="o-Flag__body small">
         <p className="u-m0">
@@ -17,7 +17,7 @@ const Flag = () => (
     </div>
     <div className="o-Flag o-Flag--top u-mb3">
       <figure className="o-Flag__figure o-col--3/12 u-mr3">
-        <img src={IMAGE_URL} alt="Impossible Triangle" className="u-bl" />
+        <img src={fillerImage} alt="Impossible Triangle" className="u-bl" />
       </figure>
       <div className="o-Flag__body small">
         <h6 className="u-mb2">Top</h6>
@@ -30,7 +30,7 @@ const Flag = () => (
     </div>
     <div className="o-Flag o-Flag--bottom u-mb3">
       <figure className="o-Flag__figure o-col--3/12 u-mr3">
-        <img src={IMAGE_URL} alt="Impossible Triangle" className="u-bl" />
+        <img src={fillerImage} alt="Impossible Triangle" className="u-bl" />
       </figure>
       <div className="o-Flag__body small">
         <h6 className="u-mb2">Bottom</h6>
@@ -43,7 +43,7 @@ const Flag = () => (
     </div>
     <div className="o-Flag o-Flag--reverse u-mb3">
       <figure className="o-Flag__figure o-col--3/12">
-        <img src={IMAGE_URL} alt="Impossible Triangle" className="u-bl" />
+        <img src={fillerImage} alt="Impossible Triangle" className="u-bl" />
       </figure>
       <div className="o-Flag__body small u-mr3">
         <h6 className="u-mb2">Reversed</h6>

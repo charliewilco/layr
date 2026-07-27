@@ -10,7 +10,7 @@
     },
     {
       "title": "Elements",
-      "description": "Elements are for styling specific HTML elements and extending responsive styling for elements (for instance [tables](/elements#tables-section)). They're a base style for elements meant to be extended by other styles down the triangle."
+      "description": "Elements are for styling specific HTML elements and extending responsive styling for elements (for instance tables). They're a base style for elements meant to be extended by other styles down the triangle."
     },
     {
       "title": "Objects",

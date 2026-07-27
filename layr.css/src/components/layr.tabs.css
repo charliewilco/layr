@@ -29,13 +29,13 @@
   border-left: var(--tabs-border);
   border-top: var(--tabs-border);
   border-radius: var(--tabs-radii) var(--tabs-radii) 0 0;
-  background: color(var(--tabs-background) a(25%));
+  background: color-mix(in srgb, var(--tabs-background) 25%, transparent);
   color: var(--tabs-marker-inactive-color);
 }
 
 .c-Tabs__marker:hover {
-  color: color(var(--litegray) blackness(+15%));
-  background: color(var(--tabs-background) a(75%));
+  color: color-mix(in srgb, var(--litegray) 85%, black);
+  background: color-mix(in srgb, var(--tabs-background) 75%, transparent);
 }
 
 .c-Tabs__marker.active {
