@@ -45,7 +45,7 @@
     "postcss-parker": "^0.1.0",
     "postcss-reporter": "^7.1.0",
     "stylelint": "^17.14.1",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "browserslist": [
     "last 1 versions"
