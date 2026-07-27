@@ -1,14 +1,11 @@
-### Installation
+### Running Locally
 
 ```sh
-npm install obsidian.css --save
+npm install
+npm run dev --workspace layr-documentation
 ```
 
-or link to the CDN
-
-```markup
-<link rel="stylesheet" href="https://unpkg.com/obsidian.css" media="screen" title="Obsidian.css" charset="utf-8">
-```
+Layr is not currently intended for npm republishing. The documentation site imports the local `layr.css` workspace package so teams can inspect a live ITCSS implementation and decide what to adapt.
 
 #### Using in Build
 
@@ -35,18 +32,18 @@ gulp.task('styles', ()=> {
 })
 ```
 
-then import into your CSS and modify some variables:
+In a downstream build, import the local package or copy the layer you want to adapt:
 
 ```css
-@import 'obsidian.css/lib/settings';
-@import 'obsidian.css/lib/generic';
-@import 'obsidian.css/lib/elements';
+@import 'layr.css/src/settings';
+@import 'layr.css/src/generic';
+@import 'layr.css/src/elements';
 
-@import 'obsidian.css/lib/objects/obsidian.grid';
+@import 'layr.css/src/objects/layr.grid-columns';
 ```
 
 ```css
-@import 'obsidian.css';
+@import 'layr.css';
 
 :root {
   --headlines: 'Proxima Nova Condensed', Lucida Grande, sans-serif;

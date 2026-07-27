@@ -1,4 +1,4 @@
-Classes in Obsidian are named with purpose.
+Classes in Layr are named with purpose.
 
 ### Prefixes
 
@@ -6,13 +6,13 @@ Objects, components, and utilities are all prefixed (`.o-`, `.c-`, `.u-`). This 
 
 #### Exceptions
 
-Elements target HTML Elements directly (ie `h2`, `ul`). Elements are not prefixed because they extend responsive ability or serve as a opt-in default for an element vs opinionated styling. Classes in `obsidian.forms-ui` add specific opinionated styling that's common to projects.
+Elements target HTML Elements directly (ie `h2`, `ul`). Elements are not prefixed because they extend responsive ability or serve as a opt-in default for an element vs opinionated styling. Classes in `layr.forms-ui` add specific opinionated styling that's common to projects.
 
 ### Suffixes
 
-Obsidian uses responsive suffixes `@sm`. Responsive targeting shouldn't be a modifier and falls in its own category. Obsidian defaults to a mobile first approach to CSS, meaning that classes without suffixes apply their styles to all screen sizes and ascend upward for styling per suffix.
+Layr uses responsive suffixes `@sm`. Responsive targeting shouldn't be a modifier and falls in its own category. Layr defaults to a mobile first approach to CSS, meaning that classes without suffixes apply their styles to all screen sizes and ascend upward for styling per suffix.
 
-`@sm`, `@md`, `@lg` are the given suffixes in Obsidian.
+`@sm`, `@md`, `@lg` are the given suffixes in Layr.
 
 ### BEM
 
@@ -30,7 +30,7 @@ Blocks can be described as squares you can draw around a piece of UI or the root
 
 Blocks are the basis of a name. They can have both a modifier and a element attached (`.Block__element--modifier`) or have just have one (either a modifier `.Block--modifier` or an element `.Block__element`.
 
-Utilities in Obsidian get a specific block name that describes their function. For example `d` abbreviating `display` or `bkg` abbreviating `background`.
+Utilities in Layr get a specific block name that describes their function. For example `d` abbreviating `display` or `bkg` abbreviating `background`.
 
 #### Element Names
 

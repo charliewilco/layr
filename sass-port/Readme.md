@@ -1,19 +1,21 @@
 **DEPRECATED: Not kept up to date**
 
-# ![Obsidian.scss](/obsidian-scss-logo.png)
+# Layr.scss
 
-A port of [Obsidian.css](https://obsidian.charlespeters.net/) for Sass
+A deprecated Sass port of Layr.
 
-Obsidian.css is a modular CSS library that focuses on code common to most projects.
+Layr is the renamed continuation of the old Obsidian.css project. This Sass port is private and kept only as historical/reference material; the live implementation is the PostCSS workspace package and Astro documentation site.
+
+Layr is a modular CSS library that focuses on code common to most projects.
 
 This project works under the belief that when abstracted most CSS is shockingly similar across projects. More than likely you'll need a type scale, a grid system, spacing utilities, media blocks, sensible default styling for elements (forms, tables, buttons). This project is a collection of the CSS patterns that have stuck with me over the last two years and grown with me.
 
 Styles are written in an adapted BEM naming convention and organized in an [ITCSS-like](/itcss) methodology. It uses PostCSS plugins to compile variables, color functions and add vendor prefixes.
 
-## Installation
+## Local Build
 
 ```sh
-npm i obsidian.scss
+npm run build --workspace layr.scss
 ```
 
 ## Compiling
@@ -21,7 +23,7 @@ npm i obsidian.scss
 Importing Sass files from npm can be a tricky business...
 
 ```scss
-@import "obsidian";
+@import "layr";
 
 $headlines: 'Proxima Nova Condensed', Lucida Grande, sans-serif;
 $body-text: 'Meta Serif Pro', Charter, serif;
@@ -32,12 +34,12 @@ $body-text: 'Meta Serif Pro', Charter, serif;
 ```javascript
 import gulp from 'gulp'
 import sass from 'gulp-sass'
-import obsidian from 'obsidian.scss'
+import layr from 'layr.scss'
 
 gulp.task('sass', () => {
   gulp.src('path/to/input.scss')
     .pipe(sass({
-      includePaths: obsidian.includePaths
+      includePaths: layr.includePaths
     }))
     .pipe(gulp.dest('path/to/output.css'))
 })
@@ -54,7 +56,7 @@ grunt.initConfig({
   sass: {
     dist: {
       options: {
-        includePaths: require('obsidian.scss').includePaths
+        includePaths: require('layr.scss').includePaths
       },
       files: {
         'path/to/output.css': 'path/to/input.scss'
@@ -64,16 +66,11 @@ grunt.initConfig({
 })
 ```
 
-### Node Sass CLI
-
-```sh
-node-sass ./lib/index.scss ./dist/bundle.css -o dist --output-style compressed --includePath ./node_modules/obsidian.scss/lib/*.scss
-```
-
 ### Development
 
 1. Clone the repository
-2. Run `npm install; npm run bundle`
+2. Run `npm install`
+3. Run `npm run build --workspace layr.scss`
 
 ## License
 

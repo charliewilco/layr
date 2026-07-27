@@ -1,13 +1,11 @@
-# [`obsidian.charlespeters.net`](https://obsidian.charlespeters.net/)
+# Layr Documentation
 
-> MDX + Next.js
+> MDX + Astro
 
 ```sh
-yarn workspace obsidian-documentation dev -p 5000
+npm run dev --workspace layr-documentation
 ```
-
-[See documentation](https://mdxjs.com/getting-started/next)
 
 Docs live under `/markdown/` they're organized by page
 
-There's a `<Module />` component that takes the title and the MDX Component into the card on each page.
+Astro pages live under `/src/pages/` and render the MDX modules into documentation sections.

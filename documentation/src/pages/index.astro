@@ -1,0 +1,19 @@
+---
+import Intro from "../../markdown/intro.mdx";
+import Article from "../components/Article.astro";
+import Installation from "../components/Installation.astro";
+import LogoNamePlate from "../components/LogoNamePlate.astro";
+
+const description =
+  "Layr is a live ITCSS reference implementation for teams.";
+---
+
+<Article meta={description}>
+  <header class="Stage">
+    <LogoNamePlate />
+    <Installation />
+  </header>
+  <section class="Intro o-Container o-Container--sm o-Container--center u-mb6 u-pb4">
+    <Intro />
+  </section>
+</Article>

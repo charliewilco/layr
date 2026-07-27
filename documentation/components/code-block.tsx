@@ -1,10 +1,5 @@
-import * as React from 'react';
-import Prism from 'react-prism';
-import 'prismjs';
-import 'prism-themes/themes/prism-base16-ateliersulphurpool.light.css';
-
-export const CodeBlock: React.SFC<{ snippet: string }> = ({ snippet }) => (
+export const CodeBlock = ({ snippet }: { snippet: string }) => (
   <pre className="Snippet__code">
-    <Prism className="language-css">{snippet}</Prism>
+    <code className="language-css">{snippet}</code>
   </pre>
 );

@@ -1,0 +1,48 @@
+/*--------Layr Default Settings--------*/
+
+/*
+  NOTE: All defaults and computations
+*/
+
+/* Spacing & Container */
+
+$base-spacing: 1rem;
+$base-flex: 18rem;
+$base-container: 75rem;
+$base-border: 1px;
+
+
+$spacing-1: $base-spacing / 4;
+$spacing-2: $base-spacing / 2;
+$spacing-3: $base-spacing;
+$spacing-4: $base-spacing * 2;
+$spacing-5: $base-spacing * 2.4;
+$spacing-6: $base-spacing * 4;
+
+/* Duration */
+
+$base-dur: 375ms;
+$base-timing-function: linear;
+
+/* Shadows */
+
+$shadow-1: 0 0 4px rgba(0, 0, 0, .035), 0 4px 8px rgba(0, 0, 0, .07);
+$shadow-2: 0 0 4px rgba(0, 0, 0, .07), 0 4px 8px rgba(0, 0, 0, .14);
+$shadow-3: 0 0 8px rgba(0, 0, 0, .18), 0 8px 16px rgba(0, 0, 0, .36);
+
+/* Typography */
+
+$ff-init-size: 100%;
+$ff-sans-serif: -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'SF UI Text', 'Segoe UI', 'Fira Sans', 'Roboto', 'Noto Sans', 'Droid Sans', 'Helvetica Neue', 'Lucida Grande', sans-serif;
+$ff-serif: 'Athelas', 'Charter', 'Hoefler Text', 'Baskerville', 'Droid Serif', 'Georgia', 'Times', serif;
+$ff-mono: 'Input Mono', 'Source Code Pro', 'Menlo', monospace;
+$ff-default: system, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'SF UI Text', 'Segoe UI', 'Roboto', 'Noto Sans', 'Helvetica Neue', 'Lucida Grande', sans-serif;
+$ff-w: 300;
+$lh: 1.6;
+
+/* Radii */
+$radius-1: $base-spacing * .25;
+$radius-2: $base-spacing * .5;
+$radius-3: $base-spacing * 1;
+$radius-4: $base-spacing * 1.5;
+$radius-5: $base-spacing * 2;

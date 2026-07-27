@@ -1,0 +1,27 @@
+/*
+  COMPONENTS - Designed Modules, Collected Pieces of UI
+
+  WARNING: THIS IS VERY WORK IN PROGRESS
+
+  Form UI..........Basic Styling for Forms, Input Fields, Select, Range, Label.
+  Buttons..........Simple and Outlined UI Buttons.
+  Progress.........Progress Bar
+  Radio Group......Visually Grouped/Contained Radio Inputs
+  Card UI..........Sampled Content in a Reflection of a Playing Card
+  Dropdown.........Dropdown Pattern Unrelated to Select tag
+  Tabs.............Inlined Tabbed UI
+
+  COMING SOON
+
+  Input Group, Navigation, Banner, Alerts, Search Embed, Badges, Accordion, Stepper Input
+*/
+
+@import './layr.btns';
+@import './layr.form-ui';
+@import './layr.radio-group';
+@import './layr.progress';
+@import './layr.card-ui';
+@import './layr.dropdown';
+@import './layr.input-group';
+@import './layr.tabs';
+@import './layr.search';

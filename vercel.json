@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "name": "obsidian",
-  "alias": "obsidian.charliewil.co",
-  "builds": [{ "src": "documentation/next.config.js", "use": "@now/next" }],
-  "routes": [{ "src": "/(.*)", "dest": "/documentation/$1" }]
-}

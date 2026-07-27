@@ -1,0 +1,255 @@
+---
+import Btn from "../../markdown/components/btn.mdx";
+import CardUI from "../../markdown/components/card.mdx";
+import DropdownUI from "../../markdown/components/dropdown.mdx";
+import Field from "../../markdown/components/field.mdx";
+import InputGroup from "../../markdown/components/input-group.mdx";
+import Progress from "../../markdown/components/progress.mdx";
+import RadioGroup from "../../markdown/components/radio-group.mdx";
+import Range from "../../markdown/components/range.mdx";
+import SelectUI from "../../markdown/components/select.mdx";
+import Tabs from "../../markdown/components/tabs.mdx";
+import BodyText from "../../markdown/elements/body-text.mdx";
+import Forms from "../../markdown/elements/forms.mdx";
+import Headlines from "../../markdown/elements/headlines.mdx";
+import Images from "../../markdown/elements/images.mdx";
+import Links from "../../markdown/elements/links.mdx";
+import Lists from "../../markdown/elements/lists.mdx";
+import Tables from "../../markdown/elements/tables.mdx";
+import Reset from "../../markdown/generic/reset.mdx";
+import ItcssContent from "../../markdown/itcss.mdx";
+import NamingClassesContent from "../../markdown/naming-classes.mdx";
+import Container from "../../markdown/objects/container.mdx";
+import Flag from "../../markdown/objects/flag.mdx";
+import Flex from "../../markdown/objects/flex.mdx";
+import Grid from "../../markdown/objects/grid.mdx";
+import Icons from "../../markdown/objects/icons.mdx";
+import Intrinsic from "../../markdown/objects/intrinsic.mdx";
+import MediaBlock from "../../markdown/objects/media-block.mdx";
+import ResponsiveTable from "../../markdown/objects/responsive-table.mdx";
+import UIList from "../../markdown/objects/ui-list.mdx";
+import PostcssContent from "../../markdown/postcss.mdx";
+import Colors from "../../markdown/settings/colors.mdx";
+import GlobalDefaults from "../../markdown/settings/global-defaults.mdx";
+import MediaQueries from "../../markdown/settings/media-queries.mdx";
+import Overriding from "../../markdown/settings/overriding.mdx";
+import Theme from "../../markdown/settings/theme.mdx";
+import StyleguideContent from "../../markdown/styleguide.mdx";
+import UsageContent from "../../markdown/usage.mdx";
+import Fit from "../../markdown/utils/fit.mdx";
+import LayoutHelpers from "../../markdown/utils/layout-helpers.mdx";
+import Position from "../../markdown/utils/position.mdx";
+import Spacing from "../../markdown/utils/spacing.mdx";
+import Surfaces from "../../markdown/utils/surfaces.mdx";
+import Typography from "../../markdown/utils/typography.mdx";
+import Article from "../components/Article.astro";
+import DefinitionList from "../components/DefinitionList.astro";
+import Installation from "../components/Installation.astro";
+import Module from "../components/Module.astro";
+
+const modulePages = {
+  components: {
+    title: "Components",
+    description:
+      "Components are modules with specific chunks of UI with more visual styling than any other layer. The components in Layr are highly experimental.",
+    modules: [
+      ["Card UI", CardUI],
+      ["Field", Field],
+      ["Select Custom Input", SelectUI],
+      ["Range Input", Range],
+      ["Buttons", Btn],
+      ["Input Group", InputGroup],
+      ["Radio Group", RadioGroup],
+      ["Progress", Progress],
+      ["Tabbed UI", Tabs],
+      ["Dropdown UI", DropdownUI],
+    ],
+  },
+  elements: {
+    title: "Elements",
+    description:
+      "In this layer, elements refer to styles applied the specific type selectors. In this implementation there is a few helper classes to accompany these default styles.",
+    modules: [
+      ["Tables", Tables],
+      ["Lists", Lists],
+      ["Headlines", Headlines],
+      ["Body Text", BodyText],
+      ["Links", Links],
+      ["Forms", Forms],
+      ["Images", Images],
+    ],
+  },
+  generic: {
+    title: "Generic",
+    description:
+      "Generic is the next layer down the inverted triangle, its purpose is provide any time of global reset against the existing browser styles. The selectors in this level are wide reaching.",
+    modules: [["Reset", Reset]],
+  },
+  objects: {
+    title: "Objects",
+    description:
+      "Objects are design patterns that have no inherit visual design, like a grid or a media / flag object.",
+    modules: [
+      ["Icons", Icons],
+      ["Responsive Table UI", ResponsiveTable],
+      ["UI List", UIList],
+      ["Containers", Container],
+      ["Flex Object", Flex],
+      ["Grid", Grid],
+      ["Intrinsic Object", Intrinsic],
+      ["Media Block", MediaBlock],
+      ["Flag", Flag],
+    ],
+  },
+  settings: {
+    title: "Settings",
+    description:
+      "Settings are the basis of Layr, it contains all the variables like spacing, color and font declarations, as well as media queries and a simple theme.",
+    modules: [
+      ["Color", Colors],
+      ["Media Queries", MediaQueries],
+      ["Global Defaults", GlobalDefaults],
+      ["Theme", Theme],
+      ["Overriding Values", Overriding],
+    ],
+  },
+  utilities: {
+    title: "Utilities",
+    description:
+      "Utilities are helper classes to modify components and override any existing styles.",
+    modules: [
+      ["Surfaces", Surfaces],
+      ["Layout", LayoutHelpers],
+      ["Fit", Fit],
+      ["Positioning", Position],
+      ["Spacing", Spacing],
+      ["Typography", Typography],
+    ],
+  },
+};
+
+const articlePages = {
+  itcss: {
+    title: "ITCSS",
+    description:
+      "ITCSS is specific approach to architecting CSS in your project. It's used as the basis of Layr.",
+    component: ItcssContent,
+  },
+  "naming-classes": {
+    title: "Naming Classes",
+    description: "A guide to naming classes in Layr",
+    component: NamingClassesContent,
+  },
+  postcss: {
+    title: "PostCSS Plugins",
+    description:
+      "Through building Layr, it felt necessary to extend PostCSS with more plugins for analysis. Honestly, would encourage anyone to do this, the API is well documented and there are dozens of examples to follow.",
+    component: PostcssContent,
+  },
+  styleguide: {
+    title: "Styleguide",
+    description: "Coding style for Layr",
+    component: StyleguideContent,
+  },
+  usage: {
+    title: "Usage",
+    description: "Installation and implementation choices for Layr",
+    component: UsageContent,
+  },
+};
+
+export function getStaticPaths() {
+  return [
+    "components",
+    "elements",
+    "generic",
+    "itcss",
+    "naming-classes",
+    "objects",
+    "postcss",
+    "settings",
+    "styleguide",
+    "usage",
+    "utilities",
+  ].map((slug) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const modulePage = modulePages[slug as keyof typeof modulePages] as
+  | {
+      title: string;
+      description: string;
+      modules: [string, any][];
+    }
+  | undefined;
+const articlePage = articlePages[slug as keyof typeof articlePages] as
+  | {
+      title: string;
+      description: string;
+      component: any;
+    }
+  | undefined;
+const ArticleContent = articlePage?.component;
+
+if (!modulePage && !articlePage) {
+  return Astro.redirect("/");
+}
+
+const definitions = [
+  {
+    title: "Settings",
+    description:
+      "Settings should contain global and base settings, project media queries, mixins, custom selectors.",
+  },
+  {
+    title: "Generic",
+    description:
+      "The generic layer is for reset styles, document wide selectors.",
+  },
+  {
+    title: "Elements",
+    description:
+      "Elements are for styling specific HTML elements and extending responsive styling for elements. They're a base style for elements meant to be extended by other styles down the triangle.",
+  },
+  {
+    title: "Objects",
+    description:
+      "Objects define common reusable patterns. They are have more structure than skin, usually have no visual style applied; it's the bare minimum UI.",
+  },
+  {
+    title: "Components",
+    description:
+      "Components are visual pieces of UI. They're more complex than objects, often containing many elements.",
+  },
+  {
+    title: "Utilities",
+    description:
+      "Utilities are helper classes meant to override any default or that extend specific styling.",
+  },
+];
+---
+
+{
+  modulePage && (
+    <Article title={modulePage.title} description={modulePage.description}>
+      {modulePage.modules.map(([title, Component]) => (
+        <Module title={title}>
+          <Component />
+        </Module>
+      ))}
+      <Installation full />
+    </Article>
+  )
+}
+
+{
+  !modulePage && articlePage && ArticleContent && (
+    <Article size="sm" title={articlePage.title} meta={articlePage.description}>
+      <ArticleContent />
+      {slug === "itcss" && <DefinitionList data={definitions} />}
+      <Installation full />
+    </Article>
+  )
+}

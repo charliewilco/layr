@@ -1,19 +1,15 @@
-import * as React from 'react'
-
 interface IFigure {
-  imgURL: string,
-  caption?: string,
-  altText: string
+  imgURL: string;
+  altText: string;
+  caption?: string;
 }
 
-export const Figure: React.SFC<IFigure> = ({ imgURL, altText, caption }) => (
-  <figure className='Figure u-mt2 u-mb4'>
-    <object>
-      <img src={imgURL} alt={altText}/>
-    </object>
-    {caption && (
-        <figcaption>{caption}</figcaption>
-     )
-    }
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const withBase = (href: string) => (href.startsWith("/") ? `${base}${href}` : href);
+
+export const Figure = ({ imgURL, altText, caption }: IFigure) => (
+  <figure className="Figure u-mt2 u-mb4">
+    <img src={withBase(imgURL)} alt={altText} />
+    {caption && <figcaption>{caption}</figcaption>}
   </figure>
-)
+);
