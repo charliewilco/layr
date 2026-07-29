@@ -1,0 +1,131 @@
+/*
+  SETTINGS - Project Wide Variables and Default Values
+
+  Colors............All Colors and Color Deviations.
+  Defaults..........Project Wide Variables, Theme & Custom Selectors.
+  Media Queries.....Custom Media Queries Declarations.
+*/
+
+/*----------Obsidian Default Colors----------*/
+
+:root {
+  /* Red */
+  --red: #D04D36;
+  --red-light: #F5DAD6;
+  --red-medium: #D04D36;
+  --red-dark: #8B0302;
+
+  /* Blue */
+  --blue: #147AAB;
+  --blue-light: #CFE4ED;
+  --blue-medium: #147AAB;
+  --blue-dark: #004470;
+
+  /* Bluegreen */
+  --bluegreen: #1D889D;
+  --bluegreen-light: #CDE4E9;
+  --bluegreen-medium: #1D889D;
+  --bluegreen-dark: #005064;
+
+  /* Yellow */
+  --yellow: #FFBA00;
+  --yellow-light: #FFDD83;
+  --yellow-medium: #FFBA00;
+  --yellow-dark: #B97F00;
+
+  /* Yellow Green */
+  --ygreen: #CEE89C;
+  --ygreen-light: #D1E9A3;
+  --ygreen-medium: #CEE89C;
+  --ygreen-dark: #90AA62;
+
+  /* Green */
+  --green: #6CC034;
+  --green-light: #CCE9E9;
+  --green-medium: #6CC034;
+  --green-dark: #278300;
+
+  /* Orange */
+  --orange: #E36511;
+  --orange-light: #F8DBC7;
+  --orange-medium: #E36511;
+  --orange-dark: #9C2900;
+
+  /* Purple */
+  --purple: #834F91;
+  --purple-light: #E7DDEA;
+  --purple-medium: #834F91;
+  --purple-dark: #4A1958;
+
+  /* Indigo */
+  --indigo: #675996;
+  --indigo-light: #E1DFEB;
+  --indigo-medium: #675997;
+  --indigo-dark: #2F265D;
+
+  /* Fuchsia */
+  --fuchsia: #FA5E5B;
+  --fuchsia-light: #FDD7D7;
+  --fuchsia-medium: #FA5E5B;
+  --fuchsia-dark: #B31528;
+
+  /* Grays */
+  --offwhite: #FDFDFD;
+  --black: #202020;
+  --palegray: #F7F7F7;
+  --gray: #CCC;
+  --text: #484848;
+  --litegray: #BCBCBC;
+}
+
+/*----------Obsidian Default Settings----------*/
+
+/*
+  NOTE: All defaults and computations
+*/
+
+/*----------Obsidian Default Theme----------*/
+
+:root {
+  /* Colors */
+  --color-1: var(--blue);
+  --color-2: var(--red);
+  --color-3: var(--yellow);
+  --color-4: var(--bluegreen);
+  --color-5: var(--litegray);
+
+  /* Font Choices */
+  --headlines: var(--ff-sans-serif);
+  --default: var(--ff-sans-serif);
+  --body-text: var(--ff-serif);
+}
+
+:root {
+  /* Spacing & Container */
+
+  --base-spacing: 1rem;
+  --base-flex: 18rem;
+  --base-container: 75rem;
+  --base-border: 1px;
+
+  /* Duration */
+
+  --base-dur: 375ms;
+  --base-timing-function: linear;
+
+  /* Shadows */
+
+  --shadow-1: 0 0 4px rgba(0, 0, 0, .035), 0 4px 8px rgba(0, 0, 0, .07);
+  --shadow-2: 0 0 4px rgba(0, 0, 0, .07), 0 4px 8px rgba(0, 0, 0, .14);
+  --shadow-3: 0 0 8px rgba(0, 0, 0, .18), 0 8px 16px rgba(0, 0, 0, .36);
+
+  /* Typography */
+
+  --ff-init-size: 100%;
+  --ff-sans-serif: -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'SF UI Text', 'Segoe UI', 'Fira Sans', 'Roboto', 'Noto Sans', 'Droid Sans', 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  --ff-serif: 'Athelas', 'Charter', 'Hoefler Text', 'Baskerville', 'Droid Serif', 'Georgia', 'Times', serif;
+  --ff-mono: 'SF Mono', 'Source Code Pro', 'Menlo', monospace;
+  --ff-default: system, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'SF UI Text', 'Segoe UI', 'Roboto', 'Noto Sans', 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  --ff-w: 300;
+  --lh: 1.6;
+}

@@ -1,0 +1,339 @@
+/*
+  OBJECTS - Unstyled skeleton design patterns
+
+  Container......Page Wrapper.
+  Grid...........Grid Parent and Responsive Columns.
+  Intrinsic......Intrinsic Object.
+  Flex...........Flex Container, Children & Modifies.
+  Media Object...Media Object Pattern with implemented with flexbox
+  Flag Object....More adaptable media object
+*/
+
+
+/*----------Containers / Wrapper Object----------*/
+
+:root {
+  --container-lg: calc(var(--base-container) * .75);
+  --container-md: calc(var(--base-container) * .625);
+  --container-sm: calc(var(--base-container) * .5);
+  --container-xs: calc(var(--base-container) * .375);
+}
+
+.Container,
+.Container--full { max-width: var(--base-container); }
+.Container--lg   { max-width: var(--container-lg); }
+.Container--md   { max-width: var(--container-md); }
+.Container--sm   { max-width: var(--container-sm); }
+.Container--xs   { max-width: var(--container-xs); }
+
+.Container--center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/*----------Grid Object----------*/
+
+:root {
+  --col-1: calc((1/12) * 100%);
+  --col-2: calc((2/12) * 100%);
+  --col-3: calc((3/12) * 100%);
+  --col-4: calc((4/12) * 100%);
+  --col-5: calc((5/12) * 100%);
+  --col-6: calc((6/12) * 100%);
+  --col-7: calc((7/12) * 100%);
+  --col-8: calc((8/12) * 100%);
+  --col-9: calc((9/12) * 100%);
+  --col-10: calc((10/12) * 100%);
+  --col-11: calc((11/12) * 100%);
+  --col-12: calc((12/12) * 100%);
+}
+
+[class*='o-Column--'] { max-width: 100%; }
+
+.Column {
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+.Column--1\/12 { width: var(--col-1); }
+.Column--2\/12 { width: var(--col-2); }
+.Column--3\/12 { width: var(--col-3); }
+.Column--4\/12 { width: var(--col-4); }
+.Column--5\/12 { width: var(--col-5); }
+.Column--6\/12 { width: var(--col-6); }
+.Column--7\/12 { width: var(--col-7); }
+.Column--8\/12 { width: var(--col-8); }
+.Column--9\/12 { width: var(--col-9); }
+.Column--10\/12 { width: var(--col-10); }
+.Column--11\/12 { width: var(--col-11); }
+.Column--12\/12 { width: var(--col-12); }
+
+@media only screen and (min-width: 31.25rem) {
+  .Column\@sm {
+    float: left;
+    position: relative;
+    min-height: 1px;
+  }
+
+  .Column--1\/12\@sm { width: var(--col-1); }
+  .Column--2\/12\@sm { width: var(--col-2); }
+  .Column--3\/12\@sm { width: var(--col-3); }
+  .Column--4\/12\@sm { width: var(--col-4); }
+  .Column--5\/12\@sm { width: var(--col-5); }
+  .Column--6\/12\@sm { width: var(--col-6); }
+  .Column--7\/12\@sm { width: var(--col-7); }
+  .Column--8\/12\@sm { width: var(--col-8); }
+  .Column--9\/12\@sm { width: var(--col-9); }
+  .Column--10\/12\@sm { width: var(--col-10); }
+  .Column--11\/12\@sm { width: var(--col-11); }
+  .Column--12\/12\@sm { width: var(--col-12); }
+}
+
+@media only screen and (min-width: 48rem) {
+  .Column\@md {
+    float: left;
+    position: relative;
+    min-height: 1px;
+  }
+
+  .Column--1\/12\@md { width: var(--col-1); }
+  .Column--2\/12\@md { width: var(--col-2); }
+  .Column--3\/12\@md { width: var(--col-3); }
+  .Column--4\/12\@md { width: var(--col-4); }
+  .Column--5\/12\@md { width: var(--col-5); }
+  .Column--6\/12\@md { width: var(--col-6); }
+  .Column--7\/12\@md { width: var(--col-7); }
+  .Column--8\/12\@md { width: var(--col-8); }
+  .Column--9\/12\@md { width: var(--col-9); }
+  .Column--10\/12\@md { width: var(--col-10); }
+  .Column--11\/12\@md { width: var(--col-11); }
+  .Column--12\/12\@md { width: var(--col-12); }
+}
+
+@media only screen and (min-width: 57.75rem) {
+  .Column\@lg {
+    float: left;
+    position: relative;
+    min-height: 1px;
+  }
+
+  .Column--1\/12\@lg { width: var(--col-1); }
+  .Column--2\/12\@lg { width: var(--col-2); }
+  .Column--3\/12\@lg { width: var(--col-3); }
+  .Column--4\/12\@lg { width: var(--col-4); }
+  .Column--5\/12\@lg { width: var(--col-5); }
+  .Column--6\/12\@lg { width: var(--col-6); }
+  .Column--7\/12\@lg { width: var(--col-7); }
+  .Column--8\/12\@lg { width: var(--col-8); }
+  .Column--9\/12\@lg { width: var(--col-9); }
+  .Column--10\/12\@lg { width: var(--col-10); }
+  .Column--11\/12\@lg { width: var(--col-11); }
+  .Column--12\/12\@lg { width: var(--col-12); }
+}
+
+/*--------UI List Object----------*/
+
+:root {
+  --UIList-border: #CCC;
+  --UIList-space: .5rem;
+}
+
+.UIList {
+  list-style: inside none;
+  margin: 0;
+  padding: 0;
+}
+
+.UIList--dividers > .UIList__item:not(:last-of-type) {
+  border-bottom: 1px solid var(--UIList-border);
+}
+
+.UIList--inline > .UIList__item { display: inline-block; }
+
+.UIList__item { padding: .5rem 0; padding: var(--UIList-space) 0; }
+
+/*----------Intrinsic Ratio Container Object----------*/
+
+/*
+  NOTE: Based off of 'Intrinsic Placeholders with the Picture Element'
+  http://daverupert.com/2015/12/intrinsic-placeholders-with-picture/
+*/
+
+.Intrinsic {
+  display: block;
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.Intrinsic__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+/* Intrinsic Sizes */
+
+.Intrinsic--square { padding-top: 100%; }
+.Intrinsic--4x3 { padding-top: 75%; }
+.Intrinsic--16x9 { padding-top: 56.25%; }
+.Intrinsic--3x1 { padding-top: 33.33333333%; }
+
+/*----------Flex Object----------*/
+
+.Flex { display: flex; }
+
+/* Wrap */
+
+.Flex--wrap { flex-wrap: wrap; }
+
+/* Centering */
+
+.Flex--center--h { align-items: center; }
+
+.Flex--center--v {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Direction */
+
+.Flex--row { flex-direction: row; }
+.Flex--column { flex-direction: column; }
+
+/* Justified Content */
+
+.Flex--j--sb,
+.Flex--between {
+  justify-content: space-between;
+}
+
+.Flex--j--sa,
+.Flex--around {
+  justify-content: space-around;
+}
+
+.Flex--j--c,
+.Flex--center {
+  justify-content: center;
+}
+
+/* Ordering Flex Objects */
+
+.Flex--first { order: 1; }
+.Flex--last { order: unset; }
+
+/*
+  NOTE: The flex child element needs an explicit width & min-height
+  for bugs related to Safari 9 and Chrome 44
+*/
+
+.Flex__child {
+  display: initial;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  width: auto;
+}
+
+/*--------Media Block Object----------*/
+
+/*
+  NOTE: This is a Flexbox implementation of the Media Object from Nicole Sullivan
+  from Solved by Flexbox by Philip Walton
+  https://philipwalton.github.io/solved-by-flexbox/demos/media-object/
+*/
+
+:root {
+  --media-figure: 6.25rem;
+  --media-figure-sm: calc(var(--media-figure) * .75);
+}
+
+.Media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Media__figure {
+  max-width: var(--media-figure-sm);
+}
+
+.Media__body { flex: 1; }
+
+@media only screen and (min-width: 48rem) {
+  .Media__figure {
+    max-width: var(--media-figure);
+  }
+}
+
+/*---------Flag Object----------*/
+
+/*
+  NOTE: From 'The flag object' from Harry Roberts
+  http://csswizardry.com/2013/05/the-flag-object/
+*/
+
+.Flag {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.Flag--top { align-items: flex-start; }
+.Flag--bottom { align-items: flex-end; }
+.Flag--reverse { flex-direction: row-reverse; }
+
+.Flag__figure,
+.Flag__body {
+  display: initial;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.Flag__figure { flex: 1 1 auto; }
+
+.Flag__body { flex: 4 4 auto; }
+
+/*--------Responsive Table Object----------*/
+
+:root {
+  --Table-border: 1px solid #145878;
+  --Table-label-color: var(--litegray);
+  --Table-label-size: .625rem;
+  --Table-label-width: 7rem;
+  --Table-label-alignment: left;
+}
+
+.RDTable { width: 100%; }
+.RDTable__heading { display: none; }
+.RDTable__content { display: block; }
+
+.RDTable__content::before {
+  content: attr(data-heading);
+  display: inline-block;
+  width: var(--Table-label-width);
+  margin-right: 1rem;
+  color: var(--Table-label-color);
+  font-size: var(--Table-label-size);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: var(--Table-label-alignment);
+}
+
+.RDTable__row:not(:last-of-type) {
+  border-bottom: var(--Table-border);
+}
+
+@media only screen and (min-width: 48rem) {
+  .RDTable__content,
+  .RDTable__heading { display: table-cell; }
+
+  .RDTable__content::before { display: none; }
+}
