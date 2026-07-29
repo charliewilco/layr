@@ -1,37 +1,68 @@
 import type { ComponentType } from "preact";
 import renderToString from "preact-render-to-string";
 
+import { HighlightedCode } from "./highlighted-code";
+
 interface ISnippet {
   component: ComponentType<any>;
   snippet: string;
 }
 
 function formatHtml(html: string) {
-  return html.replace(/></g, ">\n<").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  let indentation = 0;
+
+  return html
+    .replace(/></g, ">\n<")
+    .split("\n")
+    .map(function indentLine(line) {
+      const trimmedLine = line.trim();
+
+      if (trimmedLine.startsWith("</")) {
+        indentation = Math.max(indentation - 1, 0);
+      }
+
+      const formattedLine = `${"  ".repeat(indentation)}${trimmedLine}`;
+      const openingTag = trimmedLine.match(/^<([a-z][\w:-]*)\b[^>]*>/i)?.[1];
+      const isSelfClosing = trimmedLine.endsWith("/>");
+      const closesOnSameLine =
+        openingTag !== undefined &&
+        new RegExp(`</${openingTag}>$`, "i").test(trimmedLine);
+
+      if (openingTag && !isSelfClosing && !closesOnSameLine) {
+        indentation += 1;
+      }
+
+      return formattedLine;
+    })
+    .join("\n");
 }
 
 export function Snippet({ component: Component, snippet }: ISnippet) {
+  const html = formatHtml(renderToString(<Component />));
+
   return (
     <div className="Snippet u-mt4">
       <div className="Snippet__preview u-mb3">
         <Component />
       </div>
-      <details className="u-mb2">
-        <summary className="NavButton u-w700 u-py2">HTML</summary>
-        <pre className="Snippet__code">
-          <code
-            className="language-html"
-            dangerouslySetInnerHTML={{
-              __html: formatHtml(renderToString(<Component />)),
-            }}
-          />
-        </pre>
-      </details>
-      <details>
-        <summary className="NavButton u-w700 u-py2">CSS</summary>
-        <pre className="Snippet__code">
-          <code className="language-css">{snippet}</code>
-        </pre>
+      <details className="Snippet__details">
+        <summary className="Snippet__summary">
+          <span>View source</span>
+          <span className="Snippet__summaryMeta">HTML + CSS</span>
+        </summary>
+        <div
+          className="Snippet__sources"
+          role="group"
+          aria-label="Example source code">
+          <section className="Snippet__source">
+            <h4 className="Snippet__heading">HTML</h4>
+            <HighlightedCode code={html} language="html" />
+          </section>
+          <section className="Snippet__source">
+            <h4 className="Snippet__heading">CSS</h4>
+            <HighlightedCode code={snippet} language="css" />
+          </section>
+        </div>
       </details>
     </div>
   );
