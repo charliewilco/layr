@@ -1,0 +1,42 @@
+{
+  "name": "kndlng",
+  "private": true,
+  "version": "0.2.1",
+  "description": "The historical JavaScript token helpers for Obsidian.css and Layr",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "check": "npm run build && npm run check:consumer",
+    "check:consumer": "node ../node_modules/typescript/bin/tsc --ignoreConfig --noEmit --module nodenext --target es2022 test/consumer.ts",
+    "lint": "prettier --check \"src/**/*.{json,ts}\" \"test/**/*.{mjs,ts}\" \"*.{json,md}\"",
+    "pretest": "npm run build",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
+  },
+  "keywords": [
+    "css",
+    "design tokens",
+    "styles"
+  ],
+  "author": "charles peters <charlespeters42@gmail.com>",
+  "license": "MIT",
+  "repository": "charliewilco/layr",
+  "bugs": {
+    "url": "https://github.com/charliewilco/layr/issues"
+  },
+  "homepage": "https://github.com/charliewilco/layr/tree/main/kndlng"
+}

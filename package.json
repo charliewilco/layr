@@ -10,6 +10,7 @@
     "postcss-parker",
     "layr.css",
     "pluton.css",
+    "kndlng",
     "documentation",
     "sass-port"
   ],
@@ -27,7 +28,7 @@
     "build:sass": "npm run build --workspace layr.scss",
     "check": "turbo run check --filter=!layr.scss",
     "lint": "turbo run lint",
-    "test": "npm run test --workspace modern-parker && npm run test --workspace postcss-parker"
+    "test": "npm run test --workspace modern-parker && npm run test --workspace postcss-parker && npm run test --workspace kndlng"
   },
   "prettier": {
     "printWidth": 85,
