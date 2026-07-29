@@ -8,6 +8,7 @@
   "workspaces": [
     "modern-parker",
     "postcss-parker",
+    "level.css",
     "layr.css",
     "documentation",
     "sass-port"

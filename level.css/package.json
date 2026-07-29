@@ -1,0 +1,49 @@
+{
+  "name": "level.css",
+  "private": true,
+  "version": "0.1.1",
+  "description": "A level playing field for browser styling",
+  "main": "index.css",
+  "browser": "dist/level.css",
+  "files": [
+    "index.css",
+    "dist/*"
+  ],
+  "scripts": {
+    "clean": "del ./dist",
+    "dev": "postcss index.css -o dist/level.css --watch",
+    "build": "postcss index.css -o dist/level.css",
+    "check": "npm run lint",
+    "lint": "stylelint index.css"
+  },
+  "keywords": [
+    "normalize",
+    "reset",
+    "css"
+  ],
+  "author": "charles peters <charlespeters42@gmail.com>",
+  "license": "MIT",
+  "repository": "charliewilco/layr",
+  "bugs": {
+    "url": "https://github.com/charliewilco/layr/issues"
+  },
+  "homepage": "https://github.com/charliewilco/layr/tree/main/level.css",
+  "devDependencies": {
+    "autoprefixer": "^10.5.4",
+    "del-cli": "^7.0.0",
+    "postcss": "^8.5.23",
+    "postcss-cli": "^11.0.1",
+    "postcss-custom-properties": "^15.0.1",
+    "stylelint": "^17.14.1"
+  },
+  "browserslist": [
+    "last 1 versions"
+  ],
+  "stylelint": {
+    "rules": {
+      "block-no-empty": true,
+      "color-no-invalid-hex": true,
+      "no-invalid-double-slash-comments": true
+    }
+  }
+}
