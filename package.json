@@ -6,8 +6,10 @@
     "node": ">=26"
   },
   "workspaces": [
+    "ff.css",
     "modern-parker",
     "postcss-parker",
+    "level.css",
     "layr.css",
     "pluton.css",
     "kndlng",

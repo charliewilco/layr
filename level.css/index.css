@@ -1,0 +1,146 @@
+/*---------Level.css----------*/
+
+:root {
+  --base-border: 1px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: sans-serif;
+}
+
+aside,
+figcaption,
+figure,
+hgroup, /* TODO: Double check if super deprecated */
+main,
+menu,
+details {
+  display: block;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Media */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* Text Selectors */
+
+abbr[title] {
+  border-bottom-width: calc(var(--base-border) / 2);
+  border-bottom-style: dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: objects;
+}
+
+small {
+  font-size: 80%;
+}
+
+
+/* Content */
+
+figure {
+  margin: 0;
+}
+
+hr {
+  border: 0;
+  height: var(--base-border);
+  overflow: visible;
+}
+
+img {
+  border-style: none;
+  font-style: italic;
+  vertical-align: middle;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Code Blocks */
+
+pre {
+  overflow: auto;
+}
+
+code,
+pre {
+  font-size: 100%;
+}
+
+/* Forms */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+}
+
+select,
+button {
+  text-transform: none;
+}
+
+button {
+  overflow: visible;
+}
+
+fieldset {
+  padding: .375rem .75rem .625rem;
+}
+
+legend {
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
