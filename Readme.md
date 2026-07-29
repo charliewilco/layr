@@ -173,6 +173,11 @@ split from Obsidian.css before the project became Layr. It keeps its historical
 source API and builds with the same current PostCSS toolchain as the rest of the
 monorepo.
 
+[`kndlng`](./kndlng) preserves the JavaScript token helpers that exposed
+Obsidian.css values to CSS-in-JS consumers. It keeps the historical Obsidian
+2.1.3 token snapshot and builds with TypeScript instead of its historical
+Webpack and Babel toolchain.
+
 ### Issues
 
 **Reduced test cases are required**. All bug reports and problem issues require a reduced test case. See [CSS Tricks - Reduced Test Cases](http://css-tricks.com/reduced-test-cases/) on why they _"are the absolute, ... number one way to troubleshoot bugs."_ Reduced test cases help you identify the issue at hand and understand your own code. On our side, they greatly reduce the amount of time spent resolving the issue.
