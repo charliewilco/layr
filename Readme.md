@@ -166,6 +166,13 @@ This project uses [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspac
 
 Inside this project there are PostCSS plugins, the core library, and the dev documentation.
 
+### Historical Workspaces
+
+[`pluton.css`](./pluton.css) is preserved here as the lightweight subset that
+split from Obsidian.css before the project became Layr. It keeps its historical
+source API and builds with the same current PostCSS toolchain as the rest of the
+monorepo.
+
 ### Issues
 
 **Reduced test cases are required**. All bug reports and problem issues require a reduced test case. See [CSS Tricks - Reduced Test Cases](http://css-tricks.com/reduced-test-cases/) on why they _"are the absolute, ... number one way to troubleshoot bugs."_ Reduced test cases help you identify the issue at hand and understand your own code. On our side, they greatly reduce the amount of time spent resolving the issue.

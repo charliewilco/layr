@@ -1,0 +1,102 @@
+/*
+  GENERIC - Reset
+
+  Reset............Modified / Stripped Down Normalize.
+*/
+
+/*---------Reset----------*/
+
+/*
+  NOTE: Modified from Jonathan Neal and Nicolas Gallagher's normalize.css
+*/
+
+/* Base Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+  font: var(--ff-w) var(--ff-init-size) / var(--lh) var(--default);
+  -webkit-tap-highlight-color: transparent;
+  color: var(--text);
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Media */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* Text Selectors */
+
+abbr[title] {
+  border-bottom-width: calc(var(--base-border) / 2);
+  border-bottom-style: dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+/* Content */
+
+figure { margin: 0; }
+
+hr {
+  border: 0;
+  height: var(--base-border);
+}
+
+/* Code Blocks */
+
+pre { overflow: auto; }
+
+code,
+pre {
+  font-family: var(--ff-mono);
+  font-size: 100%;
+}
