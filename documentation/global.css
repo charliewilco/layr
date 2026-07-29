@@ -1,11 +1,20 @@
-code[class*='language-'],
-pre[class*='language-'] {
-  font-family: 'SF Mono', 'Source Code Pro', 'Menlo', monospace !important;
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "SF Mono", "Source Code Pro", "Menlo", monospace !important;
+}
+
+pre.astro-code,
+pre[class*="language-"],
+.Snippet__code {
+  margin-block: var(--base-spacing);
+  padding: var(--base-spacing);
 }
 
 .Pane {
   background: #fff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.0175), 0 4px 8px rgba(0, 0, 0, 0.035);
+  box-shadow:
+    0 0 4px rgba(0, 0, 0, 0.0175),
+    0 4px 8px rgba(0, 0, 0, 0.035);
 }
 
 .ModuleTable {
@@ -88,6 +97,14 @@ pre[class*='language-'] {
 .Snippet {
   width: 100%;
   background: white;
+}
+
+.InstallationSnippet {
+  width: 100%;
+}
+
+.InstallationSnippet .highlight {
+  max-width: 100%;
 }
 
 .Snippet__code {
