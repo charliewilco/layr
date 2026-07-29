@@ -13,6 +13,9 @@ Layr is a live ITCSS reference implementation for teams.
 
 Layr is the renamed continuation of the old Obsidian.css project. It is not currently intended for npm republishing; the goal is to keep a working, inspectable implementation of layered CSS architecture that teams can study, adapt, and run locally.
 
+The reset-only [`level.css`](./level.css) sibling is also preserved as a
+workspace for projects that need only the common browser baseline.
+
 The live documentation site is published at [charliewilco.github.io/layr](https://charliewilco.github.io/layr/).
 
 The font-family-only [`ff.css`](./ff.css) sibling is preserved as a workspace of
