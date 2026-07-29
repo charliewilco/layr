@@ -15,6 +15,9 @@ Layr is the renamed continuation of the old Obsidian.css project. It is not curr
 
 The live documentation site is published at [charliewilco.github.io/layr](https://charliewilco.github.io/layr/).
 
+The font-family-only [`ff.css`](./ff.css) sibling is preserved as a workspace of
+reusable typography utilities.
+
 This project works under the belief that when abstracted most CSS is shockingly similar across projects. More than likely you'll need a type scale, a grid system, spacing utilities, media blocks, sensible default styling for elements (forms, tables, buttons), and a small set of predictable components. Layr keeps those patterns organized as a concrete ITCSS system rather than as a marketing shell.
 
 Styles are written in an adapted BEM naming convention and organized in an [ITCSS-like](https://charliewilco.github.io/layr/itcss/) methodology. It uses PostCSS plugins to resolve imports, process custom properties, add vendor prefixes, generate stylesheet metrics, and minify production CSS.
