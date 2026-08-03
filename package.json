@@ -9,6 +9,8 @@
     "ff.css",
     "modern-parker",
     "postcss-parker",
+    "stylelint-config-wilco",
+    "wilco",
     "level.css",
     "layr.css",
     "pluton.css",
@@ -30,7 +32,7 @@
     "build:sass": "npm run build --workspace layr.scss",
     "check": "turbo run check --filter=!layr.scss",
     "lint": "turbo run lint",
-    "test": "npm run test --workspace modern-parker && npm run test --workspace postcss-parker && npm run test --workspace kndlng"
+    "test": "npm run test --workspace modern-parker && npm run test --workspace postcss-parker && npm run test --workspace kndlng && npm run test --workspace stylelint-config-wilco && npm run test --workspace wilco"
   },
   "prettier": {
     "printWidth": 85,
