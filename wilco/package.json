@@ -1,0 +1,27 @@
+{
+  "name": "wilco",
+  "version": "0.2.0",
+  "description": "An opinionated CSS linter",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "wilco": "index.js"
+  },
+  "scripts": {
+    "check": "npm run test",
+    "lint": "prettier --check \"*.{js,json,md}\" && stylelint \"css/**/*.css\" --config ../stylelint-config-wilco/index.js",
+    "test": "node --test test.js"
+  },
+  "keywords": [
+    "stylelint-config",
+    "stylelint",
+    "css"
+  ],
+  "author": "charles peters <charlespeters42@gmail.com> (https://charlespeters.net)",
+  "license": "MIT",
+  "repository": "charliewilco/layr",
+  "dependencies": {
+    "stylelint": "^17.14.1",
+    "stylelint-config-wilco": "^1.0.2"
+  }
+}
