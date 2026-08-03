@@ -46,6 +46,9 @@
     "*.{astro,js,jsx,json,md,mdx,ts,tsx,yml,yaml}": [
       "prettier --write"
     ],
+    "wilco/css/**/*.css": [
+      "stylelint --config stylelint-config-wilco/index.js"
+    ],
     "*.css": [
       "prettier --parser postcss --write"
     ]
