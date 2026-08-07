@@ -11,7 +11,7 @@
     "test": "npm run build && node --test test/*.test.mjs"
   },
   "dependencies": {
-    "postcss": "^8.5.23"
+    "postcss": "^8.5.25"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

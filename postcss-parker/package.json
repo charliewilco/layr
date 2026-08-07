@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "modern-parker": "^0.1.0",
-    "postcss": "^8.5.23"
+    "postcss": "^8.5.25"
   },
   "scripts": {
     "test": "npm run build && node --test test/*.test.mjs",
