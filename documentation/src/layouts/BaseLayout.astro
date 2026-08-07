@@ -12,8 +12,11 @@ interface Props {
 const { title, description } = Astro.props;
 const name = "Layr";
 const pageTitle = title ? `${title} | ${name}` : name;
-const currentPath = Astro.url.pathname.replace(Astro.site?.pathname ?? "", "");
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const currentPath =
+  base && Astro.url.pathname.startsWith(base)
+    ? Astro.url.pathname.slice(base.length) || "/"
+    : Astro.url.pathname;
 function withBase(href: string) {
   return `${base}${href}`;
 }

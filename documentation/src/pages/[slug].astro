@@ -17,6 +17,7 @@ import Links from "../../markdown/elements/links.mdx";
 import Lists from "../../markdown/elements/lists.mdx";
 import Tables from "../../markdown/elements/tables.mdx";
 import Reset from "../../markdown/generic/reset.mdx";
+import CssForEveryoneContent from "../../markdown/css-for-everyone.mdx";
 import ItcssContent from "../../markdown/itcss.mdx";
 import NamingClassesContent from "../../markdown/naming-classes.mdx";
 import Container from "../../markdown/objects/container.mdx";
@@ -129,6 +130,12 @@ const modulePages = {
 };
 
 const articlePages = {
+  "css-for-everyone": {
+    title: "CSS for Everyone",
+    description:
+      "An unfinished 2016 outline about CSS scaling problems, preserved as contemporaneous context for Obsidian.css—the project that became Layr.",
+    component: CssForEveryoneContent,
+  },
   itcss: {
     title: "ITCSS",
     description:
@@ -161,6 +168,7 @@ const articlePages = {
 export function getStaticPaths() {
   return [
     "components",
+    "css-for-everyone",
     "elements",
     "generic",
     "itcss",
@@ -251,7 +259,13 @@ const definitions = [
 {
   !modulePage && articlePage && ArticleContent && (
     <Article size="sm" title={articlePage.title} meta={articlePage.description}>
-      <ArticleContent />
+      {slug === "css-for-everyone" ? (
+        <div class="u-px3">
+          <ArticleContent />
+        </div>
+      ) : (
+        <ArticleContent />
+      )}
       {slug === "itcss" && <DefinitionList data={definitions} />}
       <Installation full />
     </Article>

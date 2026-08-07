@@ -1,0 +1,120 @@
+> **Historical context.** These notes were drafted from June through July
+> 2016 as an outline for _CSS for Everyone_. They are preserved as
+> contemporaneous context for Obsidian.css—the project that became Layr—not as
+> comprehensive current guidance.
+
+The original project set out to map the ecosystem around writing and
+maintaining CSS. It was less interested in individual language features than in
+the approaches teams use to keep styles understandable as a project grows.
+
+Most of its proposed chapters were never drafted. This page consolidates the
+substantive fragments, keeps the unfinished survey visible, and connects those
+questions to the choices represented by Layr.
+
+## What this was meant to be
+
+The outline described a gallery rather than a ranking: naming systems,
+architectures, preprocessors, frameworks, utilities, and tooling all existed in
+response to different constraints. The goal was to clarify what each approach
+was for without pretending that one answer fit every project.
+
+Its scope was deliberately about how to work with CSS, manage it, and scale it.
+It was not intended to catalog layout systems such as Grid or Flexbox, or to
+track every new CSS module.
+
+## Where the friction came from
+
+The notes divided CSS problems across three layers:
+
+- the design of the language;
+- differences in browser implementation and adoption; and
+- the way authors organize and extend styles.
+
+That distinction still matters. A browser compatibility problem is not fixed by
+renaming classes, and an unpredictable override chain is not necessarily a flaw
+in the language. Clear architecture starts by identifying which layer is
+actually creating the cost.
+
+One undeveloped fragment also questioned property naming—using
+`border-radius` versus “corner radius” as its example—and the default value of
+`box-sizing`. It did not reach a conclusion about either.
+
+### Compatibility over time
+
+The original outline described browser prefixes, uneven feature adoption, and
+forward and backward compatibility as a time machine. It bluntly titled the
+idea “The Shitty Time-Machine.” Stylesheets often had to support several
+generations of browser behavior at once, leaving production code with both the
+current declaration and the history of how it arrived.
+
+Build tools can absorb part of that compatibility work, but they do not remove
+the need to understand the CSS they emit. Layr uses PostCSS for transformations
+and keeps the authored source available for inspection.
+
+### The cascade and high-precedence overrides
+
+The notes grouped the cascade with inline styles and `!important` under
+“immutability.” That label was misleading: the cascade is CSS's resolution
+model, while the latter two are high-precedence mechanisms within it. Overusing
+those mechanisms can make the effective source of a style harder to find.
+
+Layr addresses that concern through explicit layers, restrained specificity,
+and documented naming boundaries. Read its current
+[styleguide](../styleguide/) for the maintained rules; this page remains
+historical context.
+
+## The planned survey
+
+The proposed book would have moved from the problem toward the major families
+of responses available in 2016:
+
+1. CSS history, language design, the cascade, and specificity.
+2. Preprocessors such as Sass, Less, and Stylus, alongside the different role
+   played by PostCSS as a transformation toolchain.
+3. Naming systems and methodologies including BEM, SUIT CSS, and SMACSS.
+4. Architectural approaches including ITCSS, OOCSS, Atomic CSS, and functional
+   or utility-first CSS.
+5. Frameworks including Bootstrap, Foundation, Pure, Skeleton, Toast, BassCSS,
+   Tachyons, Material Design Lite, and Obsidian.css.
+6. What counted as the future in 2016: CSS Modules, inline-style libraries such
+   as Aphrodite and Radium, and Web Components.
+7. Tooling for linting and visual regression testing.
+8. A final process for choosing an approach based on the project and team.
+
+Those headings were a research plan, not completed analysis. The framework and
+“future” lists are especially useful as a snapshot of the period, not as
+recommendations for a new project.
+
+The outline also referred broadly to “CSS 4.” CSS evolves through independently
+versioned modules. The specific source was
+[CSS4 Rocks' Selectors Level 4 overview](https://web.archive.org/web/20161228233402/http://css4.rocks:80/selectors-level-4/);
+the maintained technical reference is the
+[W3C Selectors Level 4 specification](https://www.w3.org/TR/selectors-4/).
+
+## What Layr chose
+
+Layr is one concrete example of the approaches in the survey rather than the
+universal answer the outline explicitly avoided:
+
+- The [ITCSS architecture](../itcss/) gives the stylesheet a progression from
+  broad settings and element defaults to narrow components and overrides.
+- Its [namespaced, BEM-informed classes](../naming-classes/) make a selector's
+  role visible at the point of use.
+- The [utilities](../utilities/) provide intentional, narrowly-scoped overrides
+  instead of allowing ad hoc declarations to spread.
+- The [PostCSS tooling](../postcss/) handles imports, compatibility, metrics,
+  and production output while preserving readable source modules.
+
+These choices are meant to be inspectable and replaceable. Teams can remove a
+layer, swap a module, or adopt only the conventions that solve a demonstrated
+problem.
+
+## Sources from the original notes
+
+Broken source URLs have been replaced with archived or canonical destinations;
+the titles remain part of the 2016 reading list.
+
+- [Jed Schmidt at TXJS 2015](https://www.youtube.com/watch?v=XjK03if9o7s)
+- [Cascading Shit Show by Jacob Thornton](https://www.youtube.com/watch?v=iniwPUEbPUM)
+- [Functional Programming, CSS, and your sanity](https://web.archive.org/web/20171220000218/http://www.jon.gold:80/2015/07/functional-css/)
+- [Functional CSS (FCSS)](https://eng.wealthfront.com/2013/08/20/functional-css-fcss/)

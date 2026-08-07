@@ -51,4 +51,8 @@ export const subpages: NavigationPage[] = [
     name: "ITCSS",
     href: "/itcss",
   },
+  {
+    name: "CSS for Everyone",
+    href: "/css-for-everyone",
+  },
 ];
